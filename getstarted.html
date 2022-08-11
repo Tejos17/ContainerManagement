@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Docker Management Webapp</title>
+   <link rel="icon" href="icon.png" type="image/x-icon">
+<style>
+body {
+  font-family: Arial;
+  color: white;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top:0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+ top:6vh;
+  left: 0;
+  background-color: white
+  color:black;
+  
+}
+
+.right {
+  top:13.7vh;
+  right: 0;
+  background-color: black;
+  overflow: scroll;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color:red;
+}
+.lt{
+position: absolute;
+color:white;
+left:5%;
+}
+.heading{
+font-style:italic;
+color:black;
+background-color:#89cff0;
+text-shadow: 0 0 3px black, 0 0 5px white;
+}
+</style>
+</head>
+<body>
+
+<div class="heading"><marquee scrollamount="18"><u><h1>LAUNCH YOUR CONTAINER IN JUST ONE CLICK BY USING OUR DOCKER MANAGEMENT WEBAPP!</h1></u></marquee></div>
+
+
+<div class="split left">
+  <div class="centered"> 
+    <script>
+function ajaxInt() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("d1").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "  ");
+  xhttp.send();
+}
+
+function forDockerPs() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("d2").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "  ");
+  xhttp.send();
+}
+</script>
+
+<h1>Launch Container</h1>
+<form action="/run" method="GET">
+Name <input name="containerName" />
+<br />
+image name
+<select name="containerImage">
+        <option>centos</option>
+        <option>ubuntu</option>
+</select>
+<br />
+<input type="submit" />
+</form>
+
+<button onclick="ajaxInt"> Launch container </button>
+<div id="d1"></div>
+<button onclick="forDockerPs"> Show all Containers </button>
+<div id="d2"></div>
+  </div>
+</div>
+
+<div class="split right">
+  <div class="lt"> 
+    <h2>Terminal</h2>
+    
+  </div>
+</div>
+     
+</body>
+</html> 
